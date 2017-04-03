@@ -16,7 +16,7 @@ public class Cannon {
     int rotation;
 
     public Cannon(){
-        rotation = 305;
+        rotation = 315;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

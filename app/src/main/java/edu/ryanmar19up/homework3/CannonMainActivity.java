@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 public class CannonMainActivity extends Activity {
 
     /**
-     * creates an AnimationCanvas containing a TestAnimator.
+     * creates an AnimationCanvas containing a MyAnimator.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class CannonMainActivity extends Activity {
         setContentView(R.layout.activity_cannon_main);
 
         // Create an animation canvas and place it in the main layout
-        Animator myAnim = new MyAnimator();
+        MyAnimator myAnim = new MyAnimator();
         AnimationCanvas myCanvas = new AnimationCanvas(this, myAnim);
         LinearLayout mainLayout = (LinearLayout) this
                 .findViewById(R.id.top);
@@ -37,11 +37,11 @@ public class CannonMainActivity extends Activity {
 
         //buttons
         Button decrease = (Button)findViewById(R.id.minus);
-        decrease.setOnClickListener(new MyAnimator());
+        decrease.setOnClickListener(myAnim);
         Button increase = (Button)findViewById(R.id.plus);
-        increase.setOnClickListener(new MyAnimator());
+        increase.setOnClickListener(myAnim);
         Button fire = (Button)findViewById(R.id.fire);
-        fire.setOnClickListener(new MyAnimator());
+        fire.setOnClickListener(myAnim);
 
     }
 

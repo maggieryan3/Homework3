@@ -20,14 +20,15 @@ public class MyAnimator implements Animator, View.OnClickListener {
     Target target2 = new Target(800,600,50);
     CannonBall cannonBall;
 
-    //velocities
-    int velX;
-    int velY;
-
     //# of ticks
     int count = 0;
 
-    boolean newCannonBall = true;
+    //whether to create a new cannonball
+    private boolean newCannonBall = false;
+
+    public MyAnimator(){
+        newCannonBall=false;
+    }
 
     /**
      * The time interval (in milliseconds) between animation frames. Thus, for
@@ -93,17 +94,17 @@ public class MyAnimator implements Animator, View.OnClickListener {
         count++;
 
         //draw new cannon
-        if(newCannonBall == true)
+        if(this.newCannonBall == true)
         {
-            cannonBall = new CannonBall(8,8);
+            cannonBall = new CannonBall(8,10);
 
             if(cannon.rotation>315) {
-                cannonBall.vy = (float) (8 - (((cannon.rotation - 315) / 2) * 0.355));
+                cannonBall.vy = (float) (10 - (((cannon.rotation - 315) / 2) * 0.355));
             }
             else if(cannon.rotation<315) {
-                cannonBall.vy = (float) (8+(((315-cannon.rotation)/2)*0.355));
+                cannonBall.vy = (float) (10 + (((315-cannon.rotation)/2)*0.355));
             }
-            newCannonBall = false;
+            this.newCannonBall = false;
         }
         if(cannonBall != null) {
             cannonBall.moveSpot(0, -0.08f);
@@ -152,7 +153,7 @@ public class MyAnimator implements Animator, View.OnClickListener {
             cannon.setRotation(cannon.rotation - 2);
         }
         else if(buttonSelection == R.id.fire){
-            newCannonBall = true;
+            this.newCannonBall = true;
         }
     }
 }
